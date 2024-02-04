@@ -17,8 +17,8 @@
 	}
 </script>
 
-<section>
-	<h2>Crear token de acceso</h2>
+<section class="space-y-4">
+	<h2 class="font-semibold text-xl">Crear token de acceso</h2>
 	<Button on:click={createToken}>Obtener</Button>
 	<p>{token}</p>
 </section>

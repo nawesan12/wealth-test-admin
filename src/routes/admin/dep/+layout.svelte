@@ -1,3 +1,7 @@
-<h1>Admin DEP</h1>
+<script>
+	import GoBackArrow from '@/components/GoBackArrow/go-back-arrow.svelte';
+</script>
+
+<GoBackArrow />
 
 <slot />
