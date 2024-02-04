@@ -33,17 +33,6 @@ model BusinessInfo {
   contadorFiscal            String
 }
 
-model Dolor {
-  id                   Int    @id @default(autoincrement())
-  costoHoraTrabajo     String
-  mayorObstaculo       String
-  duracionProblema     String
-  sentimientosProblema String
-  mejoraSituacion      String
-  ultimaAccion         String
-  razonesNoSolucion    String
-}
-
 model ExtraQuestions {
   id                 Int    @id @default(autoincrement())
   crecimientoFuturo  String
@@ -104,9 +93,8 @@ model SurveyAnswer {
   feedbackId           Int    @unique
   moneyInversionId     Int    @unique
   token                String @unique
-  dolorId              Int    @unique
 
-  @@index([userId, bussinessInfoId, subjectiveAnalysisId, objectiveAnalysisId, extraQuestionsId, feedbackId, moneyInversionId, dolorId])
+  @@index([userId, bussinessInfoId, subjectiveAnalysisId, objectiveAnalysisId, extraQuestionsId, feedbackId, moneyInversionId])
 }
 
 model User {

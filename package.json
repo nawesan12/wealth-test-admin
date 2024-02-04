@@ -39,6 +39,13 @@
 	"dependencies": {
 		"@prisma/client": "^5.9.1",
 		"bcrypt": "^5.1.1",
-		"jsonwebtoken": "^9.0.2"
+		"bits-ui": "^0.16.0",
+		"clsx": "^2.1.0",
+		"jsonwebtoken": "^9.0.2",
+		"lucide-svelte": "^0.321.0",
+		"mode-watcher": "^0.2.0",
+		"svelte-sonner": "^0.3.11",
+		"tailwind-merge": "^2.2.1",
+		"tailwind-variants": "^0.1.20"
 	}
 }
