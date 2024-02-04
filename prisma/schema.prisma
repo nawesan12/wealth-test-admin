@@ -1,0 +1,120 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model AccessInfoToken {
+  id     Int     @id @default(autoincrement())
+  token  String  @unique
+  userId String?
+
+  @@index([userId])
+}
+
+model BusinessInfo {
+  id                        Int    @id @default(autoincrement())
+  conocimientoFinanciero    String
+  formacionConstante        String
+  conocimientoExcel         String
+  tiempoNegocioSatisfaccion String
+  tipoNegocio               String
+  productoServicioPrincipal String
+  aspectosMejorar           String
+  desafioAdministracion     String
+  infoEmpleados             String
+  conocimientoIndicadores   String
+  ventajaCompetitiva        String
+  estudioMercado            String
+  planMarketing             String
+  contadorFiscal            String
+}
+
+model Dolor {
+  id                   Int    @id @default(autoincrement())
+  costoHoraTrabajo     String
+  mayorObstaculo       String
+  duracionProblema     String
+  sentimientosProblema String
+  mejoraSituacion      String
+  ultimaAccion         String
+  razonesNoSolucion    String
+}
+
+model ExtraQuestions {
+  id                 Int    @id @default(autoincrement())
+  crecimientoFuturo  String
+  listoSiguientePaso String
+  comentarioExtra    String
+}
+
+model Feedback {
+  id                  Int    @id @default(autoincrement())
+  sentimientoSesion   String
+  diagnosticoCompleto String
+  seccionFavorita     String
+  aprendizaje         String
+  mejorasDinamica     String
+  recomendacionSesion String
+}
+
+model MoneyInversion {
+  id             Int    @id @default(autoincrement())
+  rangoInversion String
+}
+
+model ObjectiveAnalysis {
+  id                   Int    @id @default(autoincrement())
+  resultadoNeto        String
+  resultadoMoneda      String
+  estrategiasInflacion String
+  cuentasNegocio       String
+  separacionFinanzas   String
+  dineroCobrado        String
+  presupuestoClaro     String
+  estructuraCostos     String
+  fondoTranquilidad    String
+  planDeudas           String
+  herramientasGestion  String
+  calculoRatios        String
+  medicionLiquidez     String
+  estadosFinancieros   String
+  planFinancieroSalto  String
+}
+
+model SubjectiveAnalysis {
+  id                   Int    @id @default(autoincrement())
+  socioOEmprendedor    String
+  relacionDinero       String
+  emocionesNegativas   String
+  perdidaOportunidades String
+  crecimientoEconomico String
+}
+
+model SurveyAnswer {
+  id                   Int    @id @default(autoincrement())
+  userId               String
+  bussinessInfoId      Int    @unique
+  subjectiveAnalysisId Int    @unique
+  objectiveAnalysisId  Int    @unique
+  extraQuestionsId     Int    @unique
+  feedbackId           Int    @unique
+  moneyInversionId     Int    @unique
+  token                String @unique
+  dolorId              Int    @unique
+
+  @@index([userId, bussinessInfoId, subjectiveAnalysisId, objectiveAnalysisId, extraQuestionsId, feedbackId, moneyInversionId, dolorId])
+}
+
+model User {
+  id       String @id
+  fullname String
+  social   String @unique
+  phone    String @unique
+  ageRange String
+  country  String
+  email    String @unique
+}
