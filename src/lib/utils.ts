@@ -62,3 +62,70 @@ export const id = () => {
 		return v.toString(16);
 	});
 };
+
+export function generarToken() {
+	const paises = [
+		'Argentina',
+		'Brasil',
+		'Chile',
+		'Francia',
+		'Italia',
+		'Japon',
+		'Mexico',
+		'Peru',
+		'Rusia',
+		'Suecia',
+		'Paris',
+		'Londres',
+		'Bangkok',
+		'Dubai',
+		'Estambul',
+		'NuevaYork',
+		'Roma',
+		'Pekin',
+		'Tokio',
+		'CiudaddeMexico'
+	];
+	const elementos = [
+		'Diamante',
+		'Oro',
+		'Platino',
+		'Rubi',
+		'Esmeralda',
+		'Zafiro',
+		'Amatista',
+		'Topacio',
+		'Opalo',
+		'Cuarzo'
+	];
+	const desarrolloPersonal = [
+		'Abundancia',
+		'Superacion',
+		'Prosperidad',
+		'Felicidad',
+		'Exito',
+		'Gratitud',
+		'Consciencia',
+		'Realizacion',
+		'Empoderamiento',
+		'Transformacion'
+	];
+
+	const formatos = [
+		() =>
+			`${paises[Math.floor(Math.random() * paises.length)]}${elementos[Math.floor(Math.random() * elementos.length)]}${desarrolloPersonal[Math.floor(Math.random() * desarrolloPersonal.length)]}`,
+		() =>
+			`${paises[Math.floor(Math.random() * paises.length)]}${elementos[Math.floor(Math.random() * elementos.length)]}`,
+		() =>
+			`${elementos[Math.floor(Math.random() * elementos.length)]}${desarrolloPersonal[Math.floor(Math.random() * desarrolloPersonal.length)]}`,
+		() =>
+			`${desarrolloPersonal[Math.floor(Math.random() * desarrolloPersonal.length)]}${paises[Math.floor(Math.random() * paises.length)]}`,
+		() =>
+			`${desarrolloPersonal[Math.floor(Math.random() * desarrolloPersonal.length)]}${elementos[Math.floor(Math.random() * elementos.length)]}`
+	];
+
+	// Seleccionar un formato aleatorio
+	const formatoAleatorio = formatos[Math.floor(Math.random() * formatos.length)];
+
+	return formatoAleatorio();
+}

@@ -1,13 +1,13 @@
 import { json, error } from '@sveltejs/kit';
 import { prisma } from '$lib/database/client';
-import { id } from '$lib/utils';
+import { generarToken } from '$lib/utils';
 /** @type {import('./$types').RequestHandler} */
 export async function GET() {
 	// TODO: Detect if Angelo is the request owner
 
 	const token = await prisma.accessInfoToken.create({
 		data: {
-			token: id()
+			token: generarToken()
 		}
 	});
 

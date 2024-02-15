@@ -1,3 +1,25 @@
+<script lang="ts">
+	import { goto } from '$app/navigation';
+
+	let user: string;
+	let pass: string;
+
+	function access() {
+		if ('angelo' != user) {
+			alert('Usuario incorrecto!');
+			return;
+		}
+
+		if ('angelo' != pass) {
+			alert('Clave incorrecta!');
+			return;
+		}
+
+		localStorage.setItem('admin-access-token', 'angelo');
+		setTimeout(() => goto('/admin'), 0);
+	}
+</script>
+
 <main class="grid h-screen place-items-center franklin">
 	<div class="px-4 bg-white rounded-lg py-8 max-w-xl w-screen sm:px-6 lg:px-8">
 		<div class="mx-auto max-w-lg">
@@ -5,7 +27,7 @@
 
 			<p class="mx-auto mt-4 max-w-md text-center text-gray-500">Frase empresarial random</p>
 
-			<form action="#" class="mb-0 mt-6 space-y-4 rounded-lg p-4 sm:p-6 lg:p-8">
+			<form on:submit={access} class="mb-0 mt-6 space-y-4 rounded-lg p-4 sm:p-6 lg:p-8">
 				<p class="text-center text-lg font-medium">Administrador</p>
 
 				<div>
@@ -13,9 +35,10 @@
 
 					<div class="relative">
 						<input
-							type="email"
+							type="text"
 							class="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm"
 							placeholder="Email"
+							bind:value={user}
 						/>
 
 						<span class="absolute inset-y-0 end-0 grid place-content-center px-4">
@@ -45,6 +68,7 @@
 							type="password"
 							class="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm"
 							placeholder="Contraseña"
+							bind:value={pass}
 						/>
 
 						<span class="absolute inset-y-0 end-0 grid place-content-center px-4">

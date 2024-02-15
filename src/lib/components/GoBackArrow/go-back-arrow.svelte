@@ -6,4 +6,4 @@
 	}
 </script>
 
-<Button on:click={goBack}>&larr;</Button>
+<Button class="m-8 fixed" on:click={goBack}>&larr;</Button>
