@@ -4,13 +4,15 @@
 	let user: string;
 	let pass: string;
 
-	function access() {
-		if ('angelo' != user) {
+	function access(e: any) {
+		e.preventDefault();
+
+		if ('angelonisi' != user) {
 			alert('Usuario incorrecto!');
 			return;
 		}
 
-		if ('angelo' != pass) {
+		if ('abundancia' != pass) {
 			alert('Clave incorrecta!');
 			return;
 		}
@@ -37,7 +39,7 @@
 						<input
 							type="text"
 							class="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm"
-							placeholder="Email"
+							placeholder="Nombre de usuario"
 							bind:value={user}
 						/>
 
