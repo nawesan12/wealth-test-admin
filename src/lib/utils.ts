@@ -129,3 +129,10 @@ export function generarToken() {
 
 	return formatoAleatorio();
 }
+
+export async function getPersonsForAnswers() {
+	const res = await fetch('/api/get-dep-answers');
+	const data = await res.json();
+
+	return data;
+}
