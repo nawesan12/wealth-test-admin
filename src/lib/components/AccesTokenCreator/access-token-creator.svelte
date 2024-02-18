@@ -2,7 +2,7 @@
 	import { toast } from 'svelte-sonner';
 	import Button from '../ui/button/button.svelte';
 
-	$: token = '';
+	let token = '';
 
 	async function createToken() {
 		try {
@@ -20,5 +20,6 @@
 <section class="space-y-4">
 	<h2 class="font-semibold text-xl">Crear token de acceso</h2>
 	<Button on:click={createToken}>Obtener</Button>
-	<p>{token}</p>
+
+	<p>{token ? `Token: ${token}` : `\t`}</p>
 </section>

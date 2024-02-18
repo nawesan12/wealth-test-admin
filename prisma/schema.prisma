@@ -11,98 +11,112 @@ model AccessInfoToken {
   id     Int     @id @default(autoincrement())
   token  String  @unique
   userId String?
+  isUsed Boolean @default(false)
 
   @@index([userId])
 }
 
 model BusinessInfo {
-  id                        Int    @id @default(autoincrement())
-  conocimientoFinanciero    String
-  formacionConstante        String
-  conocimientoExcel         String
-  tiempoNegocioSatisfaccion String
-  tipoNegocio               String
-  productoServicioPrincipal String
-  aspectosMejorar           String
-  desafioAdministracion     String
-  infoEmpleados             String
-  conocimientoIndicadores   String
-  ventajaCompetitiva        String
-  estudioMercado            String
-  planMarketing             String
-  contadorFiscal            String
-}
-
-model ExtraQuestions {
-  id                 Int    @id @default(autoincrement())
-  crecimientoFuturo  String
-  listoSiguientePaso String
-  comentarioExtra    String
+  id                      Int     @id @default(autoincrement())
+  historyAndVision        String
+  businessType            String
+  businessModel           String
+  mainProduct             String
+  competitiveAdvantage    String
+  marketResearch          String
+  marketingPlan           String
+  accountant              String
+  financialSeparation     String
+  technologySoftware      String
+  financialConsultant     String
+  objectives              String
+  challenges              String
+  mainAspectsToImprove    String
+  administrationChallenge String
+  employees               String
+  audits                  String
+  advertising             String
+  salesProjections        String
+  adMetrics               String? @default("-")
 }
 
 model Feedback {
-  id                  Int    @id @default(autoincrement())
-  sentimientoSesion   String
-  diagnosticoCompleto String
-  seccionFavorita     String
-  aprendizaje         String
-  mejorasDinamica     String
-  recomendacionSesion String
-}
-
-model MoneyInversion {
-  id             Int    @id @default(autoincrement())
-  rangoInversion String
-}
-
-model ObjectiveAnalysis {
-  id                   Int    @id @default(autoincrement())
-  resultadoNeto        String
-  resultadoMoneda      String
-  estrategiasInflacion String
-  cuentasNegocio       String
-  separacionFinanzas   String
-  dineroCobrado        String
-  presupuestoClaro     String
-  estructuraCostos     String
-  fondoTranquilidad    String
-  planDeudas           String
-  herramientasGestion  String
-  calculoRatios        String
-  medicionLiquidez     String
-  estadosFinancieros   String
-  planFinancieroSalto  String
+  id                     Int         @id @default(autoincrement())
+  comprehensiveDiagnosis String
+  surprisingAspects      String
+  newLearnings           String
+  suggestions            String
+  recommendSession       BOOLOPTIONS @default(Si)
 }
 
 model SubjectiveAnalysis {
-  id                   Int    @id @default(autoincrement())
-  socioOEmprendedor    String
-  relacionDinero       String
-  emocionesNegativas   String
-  perdidaOportunidades String
-  crecimientoEconomico String
-}
-
-model SurveyAnswer {
-  id                   Int    @id @default(autoincrement())
-  userId               String
-  bussinessInfoId      Int    @unique
-  subjectiveAnalysisId Int    @unique
-  objectiveAnalysisId  Int    @unique
-  extraQuestionsId     Int    @unique
-  feedbackId           Int    @unique
-  moneyInversionId     Int    @unique
-  token                String @unique
-
-  @@index([userId, bussinessInfoId, subjectiveAnalysisId, objectiveAnalysisId, extraQuestionsId, feedbackId, moneyInversionId])
+  id                      Int    @id @default(autoincrement())
+  financialKnowledge      String
+  accountingKnowledge     String
+  financialTraining       String
+  partnerStatus           String
+  delegation              String
+  emotionalExperience     String
+  missedOpportunity       String
+  suddenGrowth            String
+  childhoodExperience     String
+  emotionalEvaluation     String
+  longTermCommitment      String
+  financialRiskTolerance  String
+  financialDecisionMaking String
+  delegatedAreas          String @default("-")
 }
 
 model User {
-  id       String @id
-  fullname String
-  social   String @unique
-  phone    String @unique
-  ageRange String
-  country  String
-  email    String @unique
+  id                         String @id
+  name                       String
+  instagram                  String @unique
+  whatsapp                   String @unique
+  country                    String
+  email                      String @unique
+  age                        String
+  businessAgeAndSatisfaction String
+  referredBy                 String
+  web                        String @default("Sin Web")
+}
+
+model Business {
+  id                   Int     @id @default(autoincrement())
+  businessInfoId       Int?    @unique
+  subjectiveAnalysisId Int?    @unique
+  financialAnalysisId  Int?    @unique
+  feedbackId           Int?    @unique
+  userId               String?
+  accessInfoTokenId    Int?    @unique
+
+  @@index([userId])
+}
+
+model FinancialAnalysis {
+  id                       Int     @id @default(autoincrement())
+  financialPolicy          String
+  financialIndicators      String
+  profitabilityMetrics     String
+  currencyMeasurement      String
+  inflationMitigation      String
+  financialAccounts        String
+  ownerCompensation        String
+  budgeting                String
+  costStructure            String
+  emergencyFund            String
+  breakevenAnalysis        String
+  debtManagement           String
+  liquidityMeasurement     String
+  financialStatements      String
+  inventoryTracking        String
+  externalFinancing        String
+  growthTransitionPlan     String
+  financialConsultantPlan  String
+  trackingMethod           String? @default("-")
+  extraCommentAboutCompany String? @default("-")
+}
+
+enum BOOLOPTIONS {
+  Si
+  No
 }
