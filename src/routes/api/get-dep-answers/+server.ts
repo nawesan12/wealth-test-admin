@@ -1,22 +1,35 @@
 import { json, error } from '@sveltejs/kit';
 import { prisma } from '$lib/database/client';
-/** @type {import('./$types').RequestHandler} */
+
 export async function GET() {
-	// TODO: Detect if Angelo is the request owner
+	try {
+		const accessInfoTokens = await prisma.accessInfoToken.findMany();
 
-	const surveys = await prisma.user.findMany({
-		select: {
-			name: true
+		if (!accessInfoTokens || accessInfoTokens.length === 0) {
+			return json({ msg: 'There are no surveys!' });
 		}
-	});
 
-	if (!surveys) {
-		return error(400, 'We could not read the surveys from database!');
+		// Fetch users for each accessInfoToken concurrently
+		const usersPromises = accessInfoTokens.map((token) => {
+			return prisma.user.findUnique({
+				where: {
+					id: token.userId as string // Assuming the field name is userId
+				}
+			});
+		});
+
+		const users = await Promise.all(usersPromises);
+
+		// Combine accessInfoTokens with their respective users
+		const surveys = accessInfoTokens.map((token, index) => {
+			return {
+				...token,
+				user: users[index] // Attach the user to each accessInfoToken
+			};
+		});
+
+		return json(surveys);
+	} catch (err) {
+		return error(500, 'Internal Server Error');
 	}
-
-	if (surveys.length === 0) {
-		return json({ msg: 'There are not surveys!' });
-	}
-
-	return json(surveys);
 }
