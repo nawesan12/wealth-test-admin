@@ -30,6 +30,6 @@ export async function GET() {
 
 		return json(surveys);
 	} catch (err) {
-		return error(500, 'Internal Server Error');
+		return error(500, 'Internal Server Erroraaa');
 	}
 }
