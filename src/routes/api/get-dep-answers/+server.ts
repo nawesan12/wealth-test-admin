@@ -18,6 +18,7 @@ export async function GET() {
 			});
 		});
 
+		// Wait for all user data promises to resolve
 		const users = await Promise.all(usersPromises);
 
 		// Combine accessInfoTokens with their respective users
@@ -30,6 +31,6 @@ export async function GET() {
 
 		return json(surveys);
 	} catch (err) {
-		return error(500, 'Internal Server Erroraaa');
+		return error(500, 'Internal Server Error');
 	}
 }

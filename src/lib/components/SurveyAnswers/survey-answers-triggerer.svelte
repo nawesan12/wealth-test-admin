@@ -7,6 +7,8 @@
 
 	let persons: any[] = [];
 
+	console.log(persons)
+
 	onMount(() => {
 		getPersonsForAnswers().then((data) => {
 			persons = data;
