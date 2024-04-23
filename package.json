@@ -39,7 +39,7 @@
 	"dependencies": {
 		"@prisma/client": "^5.9.1",
 		"bcrypt": "^5.1.1",
-		"bits-ui": "^0.16.0",
+		"bits-ui": "^0.21.4",
 		"clsx": "^2.1.0",
 		"dotenv": "^16.4.1",
 		"jsonwebtoken": "^9.0.2",
