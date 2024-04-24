@@ -7,7 +7,7 @@
 	<Table.Caption>Emperador Financiero - {new Date().getFullYear()}</Table.Caption>
 	<Table.Header>
 		<Table.Row>
-			<Table.Head class="w-[100px]">Nombre</Table.Head>
+			<Table.Head>Nombre</Table.Head>
 			<Table.Head>Token</Table.Head>
 			<Table.Head>Fecha</Table.Head>
 		</Table.Row>
