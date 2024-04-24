@@ -31,6 +31,7 @@ export async function GET() {
 
 		return json(surveys);
 	} catch (err) {
+		console.error('Error fetching surveys:', err); // Log the error for debugging
 		return error(500, 'Internal Server Error');
 	}
 }
