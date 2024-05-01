@@ -3,7 +3,11 @@ import { prisma } from '$lib/database/client';
 
 export async function GET() {
 	try {
-		const accessInfoTokens = await prisma.accessInfoToken.findMany();
+		const accessInfoTokens = await prisma.accessInfoToken.findMany({
+			where: {
+				isUsed: true
+			}
+		});
 
 		if (!accessInfoTokens || accessInfoTokens.length === 0) {
 			return json({ msg: 'There are no surveys!' });
